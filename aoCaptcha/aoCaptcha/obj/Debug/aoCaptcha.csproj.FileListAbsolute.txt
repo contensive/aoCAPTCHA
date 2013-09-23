@@ -1,0 +1,6 @@
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.dll
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\CPBase.dll
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
