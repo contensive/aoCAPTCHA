@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Contensive.BaseClasses;
 using System.Xml;
+using MSXML2;
 
 namespace Contensive.addons.aoRecaptcha
 {

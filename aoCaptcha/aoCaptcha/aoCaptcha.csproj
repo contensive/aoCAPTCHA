@@ -51,7 +51,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CPBase">
-      <HintPath>..\..\..\Release\CPBase.dll</HintPath>
+      <HintPath>..\..\..\..\Project\aoCaptcha\bin\Debug\CPBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSXML2">
+      <HintPath>..\..\..\..\Project\aoCaptcha\bin\Debug\Interop.MSXML2.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
