@@ -42,6 +42,7 @@ namespace Contensive.addons.aoRecaptcha
                 stream.AppendLine("<textarea name='recaptcha_challenge_field' rows='3' cols='40'></textarea>");
                 stream.AppendLine("<input type='hidden' name='recaptcha_response_field' value='manual_challenge'>");
                 stream.AppendLine("</noscript>");
+                stream.AppendLine(cp.Html.Hidden("prcs", "1"));
             }
             catch (Exception ex)
             {
