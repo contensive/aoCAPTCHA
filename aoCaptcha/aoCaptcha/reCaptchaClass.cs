@@ -48,7 +48,8 @@ namespace Contensive.addons.aoRecaptcha
                     }
                     cp.Doc.SetProperty("Challenge", cp.Doc.GetText("recaptcha_challenge_field"));
                     cp.Doc.SetProperty("Response", cp.Doc.GetText("recaptcha_response_field"));
-                    captchaRespone = cp.Utils.ExecuteAddon(captchaProcessAddonGuid);
+                    captchaRespone = cp.Utils.ExecuteAddon(captchaProcessAddonGuid,CPUtilsBaseClass.addonContext.ContextSimple);
+                    captchaRespone = cp.Utils.EncodeText(captchaRespone);
                     if (captchaRespone != "")
                     {
                         cp.UserError.Add(captchaRespone);

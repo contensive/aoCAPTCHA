@@ -26,7 +26,10 @@ namespace Contensive.addons.aoRecaptcha
         private string[] responseArray;
         private readonly StringBuilder VarString;
         private readonly ServerXMLHTTP objXmlHttp;
-
+        private const string vbCr = "\r";
+        private const string vbLf = "\n";
+        private const string vbCrLf = "\r\n";
+        //
         public override object Execute(CPBaseClass cp)
         {
             try
@@ -44,14 +47,14 @@ namespace Contensive.addons.aoRecaptcha
                     cp.Site.SetProperty(privateKeyField, privateKeyValue);
                     privateKey = cp.Site.GetProperty(privateKeyField, privateKeyValue);
                 }
-                VarString.Append(string.Format("privatekey='{0}'", privateKey));
-                VarString.Append(string.Format("&remoteip='{0}'", cp.Request.RemoteIP)); // Need to ask how to get Main.VisitRemoteIP herer
-                VarString.Append(string.Format("&challenge='{0}'", challenge));
-                VarString.Append(string.Format("&response='{0}'", response));
+                VarString.Append(string.Format("privatekey={0}", privateKey));
+                VarString.Append(string.Format("&remoteip={0}", cp.Request.RemoteIP)); // Need to ask how to get Main.VisitRemoteIP herer
+                VarString.Append(string.Format("&challenge={0}", challenge));
+                VarString.Append(string.Format("&response={0}", response));
                 objXmlHttp.open("POST", "http://api-verify.recaptcha.net/verify", false);
                 objXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                objXmlHttp.send(VarString);
-                responseArray = objXmlHttp.responseText.Split(new char[] { '/' });
+                objXmlHttp.send(VarString.ToString());
+                responseArray = objXmlHttp.responseText.Split( new char[] { '\n' });
                 if (responseArray.Length >= 2)
                 {
                     stream = responseArray[0] == "true" ? string.Empty : responseArray[1];
