@@ -1,9 +1,0 @@
-C:\Ravi\Project\aoCaptcha\bin\x64\Debug\aoCaptcha.dll
-C:\Ravi\Project\aoCaptcha\bin\x64\Debug\aoCaptcha.pdb
-C:\Ravi\Project\aoCaptcha\bin\x64\Debug\CPBase.dll
-C:\Ravi\Project\aoCaptcha\bin\x64\Debug\Interop.MSXML2.dll
-C:\Ravi\Project\aoCaptcha\obj\x64\Debug\aoCaptcha.csprojResolveAssemblyReference.cache
-C:\Ravi\Project\aoCaptcha\obj\x64\Debug\Interop.MSXML2.dll
-C:\Ravi\Project\aoCaptcha\obj\x64\Debug\aoCaptcha.csproj.ResolveComReference.cache
-C:\Ravi\Project\aoCaptcha\obj\x64\Debug\aoCaptcha.dll
-C:\Ravi\Project\aoCaptcha\obj\x64\Debug\aoCaptcha.pdb
