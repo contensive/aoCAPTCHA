@@ -16,6 +16,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="CPBase">
       <HintPath>..\..\..\Release\CPBase.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Interop.MSXML2">
       <HintPath>..\..\..\..\Project\aoCaptcha\bin\Debug\Interop.MSXML2.dll</HintPath>
@@ -96,4 +97,9 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)*.dll" "C:\Program Files (x86)\kma\Contensive\Addons"</PostBuildEvent>
   </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_UseGlobalSettings="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

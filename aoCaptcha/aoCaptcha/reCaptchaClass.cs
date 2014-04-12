@@ -37,8 +37,7 @@ namespace Contensive.addons.aoRecaptcha
                 previousFormPosted = cp.Doc.GetBoolean(requestnameProcess);
                 if (previousFormPosted)
                 {
-                    openSuccessfully = cp.Version == "3.4.060" ? cs.Open("Add-Ons", string.Format("ccGUID='{0}'", captchaProcessAddonGuid), "ID,Name,ccGUID") :
-                              cs.Open("Add-Ons", string.Format("aoGUID={0}", captchaProcessAddonGuid));
+                    openSuccessfully = cs.Open("Add-Ons", string.Format("ccGUID='{0}'", captchaProcessAddonGuid), "ID,Name,ccGUID");
 
                     if (openSuccessfully)
                     {
