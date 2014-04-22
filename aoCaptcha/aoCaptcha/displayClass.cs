@@ -30,18 +30,36 @@ namespace Contensive.addons.aoRecaptcha
                     publicKey = cp.Site.GetText(redCaptchPrivateKey, parameter);
                 }
 
-                stream.Append("<script type='text/javascript'>");
-                stream.AppendLine("var RecaptchaOptions = {");
-                stream.Append("   theme : 'white',");
-                stream.Append("   tabindex : 0");
-                stream.Append("};");
-                stream.AppendLine("</script>");
-                stream.AppendLine(string.Format("<script type='text/javascript' src='http://api.recaptcha.net/challenge?k={0}'></script>", publicKey));
-                stream.AppendLine("<noscript>");
-                stream.AppendLine(string.Format("<iframe src='http://api.recaptcha.net/noscript?k={0}' frameborder='1'></iframe><br>", publicKey));
-                stream.AppendLine("<textarea name='recaptcha_challenge_field' rows='3' cols='40'></textarea>");
-                stream.AppendLine("<input type='hidden' name='recaptcha_response_field' value='manual_challenge'>");
-                stream.AppendLine("</noscript>");
+                if (cp.Request.Secure)
+                {
+                    stream.Append("<script type='text/javascript'>");
+                    stream.AppendLine("var RecaptchaOptions = {");
+                    stream.Append("   theme : 'white',");
+                    stream.Append("   tabindex : 0");
+                    stream.Append("};");
+                    stream.AppendLine("</script>");
+                    stream.AppendLine(string.Format("<script type='text/javascript' src='https://api.recaptcha.net/challenge?k={0}'></script>", publicKey));
+                    stream.AppendLine("<noscript>");
+                    stream.AppendLine(string.Format("<iframe src='https://api.recaptcha.net/noscript?k={0}' frameborder='1'></iframe><br>", publicKey));
+                    stream.AppendLine("<textarea name='recaptcha_challenge_field' rows='3' cols='40'></textarea>");
+                    stream.AppendLine("<input type='hidden' name='recaptcha_response_field' value='manual_challenge'>");
+                    stream.AppendLine("</noscript>");
+                }
+                else
+                {
+                    stream.Append("<script type='text/javascript'>");
+                    stream.AppendLine("var RecaptchaOptions = {");
+                    stream.Append("   theme : 'white',");
+                    stream.Append("   tabindex : 0");
+                    stream.Append("};");
+                    stream.AppendLine("</script>");
+                    stream.AppendLine(string.Format("<script type='text/javascript' src='http://api.recaptcha.net/challenge?k={0}'></script>", publicKey));
+                    stream.AppendLine("<noscript>");
+                    stream.AppendLine(string.Format("<iframe src='http://api.recaptcha.net/noscript?k={0}' frameborder='1'></iframe><br>", publicKey));
+                    stream.AppendLine("<textarea name='recaptcha_challenge_field' rows='3' cols='40'></textarea>");
+                    stream.AppendLine("<input type='hidden' name='recaptcha_response_field' value='manual_challenge'>");
+                    stream.AppendLine("</noscript>");
+                }
                 stream.AppendLine(cp.Html.Hidden("prcs", "1"));
             }
             catch (Exception ex)
