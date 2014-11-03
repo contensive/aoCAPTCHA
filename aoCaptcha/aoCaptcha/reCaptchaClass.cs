@@ -55,7 +55,7 @@ namespace Contensive.addons.aoRecaptcha
                     }
                 }
                 returnHtml = cp.Utils.ExecuteAddon(captchaFormAddonGuid);
-                returnHtml += cp.Html.Hidden(requestnameProcess, "1");
+                //returnHtml += cp.Html.Hidden(requestnameProcess, "1");
 
             }
             catch (Exception ex)
