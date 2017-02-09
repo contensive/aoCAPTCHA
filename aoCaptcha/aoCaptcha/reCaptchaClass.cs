@@ -31,32 +31,43 @@ namespace Contensive.addons.aoRecaptcha
                 CPCSBaseClass cs = cp.CSNew();
                 string captchaRespone, optionStr, response;
                 bool openSuccessfully = false;
-
-
-
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.reCaptchaClass.execute()--enter");
+                //
                 previousFormPosted = cp.Doc.GetBoolean(requestnameProcess);
                 if (previousFormPosted)
                 {
-                    openSuccessfully = cs.Open("Add-Ons", string.Format("ccGUID='{0}'", captchaProcessAddonGuid), "ID,Name,ccGUID");
+                    //
+                    appendDebug(cp, "reCaptchaClass.execute, previousFormPosted");
+                    //
+                    //openSuccessfully = cs.Open("Add-Ons", string.Format("ccGUID='{0}'", captchaProcessAddonGuid), "ID,Name,ccGUID");
 
-                    if (openSuccessfully)
-                    {
-                        optionStr = "Challenge=" + cp.Doc.GetText("recaptcha_challenge_field");
-                        optionStr = optionStr + "&Response=" + cp.Doc.GetText("recaptcha_response_field");
-                        response = cp.Utils.ExecuteAddon(optionStr, CPUtilsBaseClass.addonContext.ContextAdmin);
-                    }
+                    //if (openSuccessfully)
+                    //{
+                    //    optionStr = "Challenge=" + cp.Doc.GetText("recaptcha_challenge_field");
+                    //    optionStr = optionStr + "&Response=" + cp.Doc.GetText("recaptcha_response_field");
+                    //    response = cp.Utils.ExecuteAddon(optionStr, CPUtilsBaseClass.addonContext.ContextAdmin);
+                    //}
                     cp.Doc.SetProperty("Challenge", cp.Doc.GetText("recaptcha_challenge_field"));
                     cp.Doc.SetProperty("Response", cp.Doc.GetText("recaptcha_response_field"));
-                    captchaRespone = cp.Utils.ExecuteAddon(captchaProcessAddonGuid,CPUtilsBaseClass.addonContext.ContextSimple);
+                    //
+                    appendDebug(cp, "reCaptchaClass.execute, Challenge [" + cp.Doc.GetText("recaptcha_challenge_field") + "]");
+                    appendDebug(cp, "reCaptchaClass.execute, Response [" + cp.Doc.GetText("recaptcha_response_field") + "]");
+                    //
+                    captchaRespone = cp.Utils.ExecuteAddon(captchaProcessAddonGuid, CPUtilsBaseClass.addonContext.ContextSimple);
                     captchaRespone = cp.Utils.EncodeText(captchaRespone);
+                    //
+                    appendDebug(cp, "reCaptchaClass.execute, captchaRespone [" + captchaRespone + "]");
+                    //
                     if (captchaRespone != "")
                     {
                         cp.UserError.Add(captchaRespone);
                     }
                 }
                 returnHtml = cp.Utils.ExecuteAddon(captchaFormAddonGuid);
-                //returnHtml += cp.Html.Hidden(requestnameProcess, "1");
-
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.reCaptchaClass.execute()--exit");
+                //
             }
             catch (Exception ex)
             {
@@ -64,7 +75,10 @@ namespace Contensive.addons.aoRecaptcha
             }
             return returnHtml;
         }
-
-
+        //
+        private void appendDebug(CPBaseClass cp,  string logMsg)
+        {
+            //cp.Utils.AppendLog("aoCaptcha.log", logMsg);
+        }
     }
 }

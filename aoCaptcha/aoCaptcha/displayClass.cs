@@ -21,7 +21,9 @@ namespace Contensive.addons.aoRecaptcha
             string publicKey;
             try
             {
-                //stream.Append("From the displayClass");
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.displayClass.execute()-enter");
+                //
                 CPCSBaseClass cs = cp.CSNew();
                 publicKey = cp.Site.GetText(redCaptchPrivateKey, parameter);
                 if (string.IsNullOrEmpty(publicKey))
@@ -61,6 +63,9 @@ namespace Contensive.addons.aoRecaptcha
                     stream.AppendLine("</noscript>");
                 }
                 stream.AppendLine(cp.Html.Hidden("prcs", "1"));
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.displayClass.execute()-exit");
+                //
             }
             catch (Exception ex)
             {
@@ -68,9 +73,12 @@ namespace Contensive.addons.aoRecaptcha
             }
             return stream.ToString();
         }
-
-
-
+        //
+        private void appendDebug(CPBaseClass cp, string logMsg)
+        {
+            //cp.Utils.AppendLog("aoCaptcha.log", logMsg);
+        }
+        //
         StringBuilder stream = new StringBuilder();
         private const string redCaptchPrivateKey = "reCAPTCHA Public Key";
         private const string parameter = "6Ld_AgYAAAAAALQ66lAKd0-_YOKY3EVHQt0i0tQJ";

@@ -22,7 +22,7 @@ namespace Contensive.addons.aoRecaptcha
         }
         private const string privateKeyField = "reCAPTCHA Private Key";
         private const string privateKeyValue = "6Ld_AgYAAAAAAH2GRsRZHth-Rud3nTKjx8d019pE";
-        private string privateKey, stream, challenge, response;
+        private string privateKey, returnResult, challenge, response;
         private string[] responseArray;
         private readonly StringBuilder VarString;
         private readonly ServerXMLHTTP objXmlHttp;
@@ -34,37 +34,71 @@ namespace Contensive.addons.aoRecaptcha
         {
             try
             {
-                privateKey = cp.Site.GetProperty(privateKeyField, privateKeyValue);
-                challenge = cp.Doc.GetText("Challenge");
-                response = cp.Doc.GetText("Response");
-                if (string.IsNullOrEmpty(challenge))
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.processClass.execute()--enter");
+                //
+                returnResult = cp.Doc.GetText("recaptcha first result");
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.processClass.execute()--previous result [" + returnResult + "]");
+                if (string.IsNullOrEmpty(returnResult))
                 {
-                    challenge = cp.Doc.GetText("recaptcha_challenge_field");
-                    response = cp.Doc.GetText("recaptcha_challenge_field");
-                }
-                if (string.IsNullOrEmpty(privateKey))
-                {
-                    cp.Site.SetProperty(privateKeyField, privateKeyValue);
+                    //
+                    // recapcha can only be processed once per page
+                    //
                     privateKey = cp.Site.GetProperty(privateKeyField, privateKeyValue);
+                    challenge = cp.Doc.GetText("Challenge");
+                    response = cp.Doc.GetText("Response");
+                    if (string.IsNullOrEmpty(challenge))
+                    {
+                        challenge = cp.Doc.GetText("recaptcha_challenge_field");
+                        response = cp.Doc.GetText("recaptcha_challenge_field");
+                    }
+                    if (string.IsNullOrEmpty(privateKey))
+                    {
+                        cp.Site.SetProperty(privateKeyField, privateKeyValue);
+                        privateKey = cp.Site.GetProperty(privateKeyField, privateKeyValue);
+                    }
+                    VarString.Append(string.Format("privatekey={0}", privateKey));
+                    VarString.Append(string.Format("&remoteip={0}", cp.Request.RemoteIP)); // Need to ask how to get Main.VisitRemoteIP herer
+                    VarString.Append(string.Format("&challenge={0}", challenge));
+                    VarString.Append(string.Format("&response={0}", response));
+                    objXmlHttp.open("POST", "http://api-verify.recaptcha.net/verify", false);
+                    objXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    objXmlHttp.send(VarString.ToString());
+                    responseArray = objXmlHttp.responseText.Split(new char[] { '\n' });
+                    if (responseArray.Length >= 2)
+                    {
+                        returnResult = responseArray[0] == "true" ? string.Empty : responseArray[1];
+                    }
+                    //
+                    // save the first result for future calls on this page (empty string is reserved for the case where it did not previously run, so substitute)
+                    //
+                    if (returnResult == "")
+                    {
+                        returnResult = "empty";
+                    }
+                    cp.Doc.SetProperty("recaptcha first result", returnResult);
                 }
-                VarString.Append(string.Format("privatekey={0}", privateKey));
-                VarString.Append(string.Format("&remoteip={0}", cp.Request.RemoteIP)); // Need to ask how to get Main.VisitRemoteIP herer
-                VarString.Append(string.Format("&challenge={0}", challenge));
-                VarString.Append(string.Format("&response={0}", response));
-                objXmlHttp.open("POST", "http://api-verify.recaptcha.net/verify", false);
-                objXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                objXmlHttp.send(VarString.ToString());
-                responseArray = objXmlHttp.responseText.Split( new char[] { '\n' });
-                if (responseArray.Length >= 2)
+                if (returnResult == "empty")
                 {
-                    stream = responseArray[0] == "true" ? string.Empty : responseArray[1];
+                    returnResult = "";
+                } else if (returnResult == "incorrect-captcha-sol") 
+                {
+                    returnResult = "The Recaptcha term did not match correctly. Please try again.";
                 }
+                //
+                appendDebug(cp, "Contensive.addons.aoRecaptcha.processClass.execute()--exit");
+                //
             }
             catch (Exception ex)
             {
                 cp.Site.ErrorReport(ex, "Unexpeced trap");
             }
-            return stream;
+            return returnResult;
+        }
+        //
+        private void appendDebug(CPBaseClass cp, string logMsg)
+        {
+            //cp.Utils.AppendLog("aoCaptcha.log", logMsg);
         }
     }
 }

@@ -1,7 +1,3 @@
-C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.dll
-C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
-C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
-C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\ResolveAssemblyReference.cache
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.dll
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
@@ -9,3 +5,7 @@ C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\CPBase.dll
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\Interop.MSXML2.dll
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
 C:\Ravi\Git\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.dll
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
+C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
