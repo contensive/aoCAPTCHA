@@ -50,7 +50,7 @@ namespace Contensive.addons.aoRecaptcha
                     if (string.IsNullOrEmpty(challenge))
                     {
                         challenge = cp.Doc.GetText("recaptcha_challenge_field");
-                        response = cp.Doc.GetText("recaptcha_challenge_field");
+                        response = cp.Doc.GetText("recaptcha_response_field");
                     }
                     if (string.IsNullOrEmpty(privateKey))
                     {

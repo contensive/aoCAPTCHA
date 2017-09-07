@@ -9,3 +9,7 @@ C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.
 C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
 C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
 C:\Users\jay\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
+C:\Users\kmaAdmin\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.dll
+C:\Users\kmaAdmin\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\bin\Debug\aoCaptcha.pdb
+C:\Users\kmaAdmin\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.dll
+C:\Users\kmaAdmin\Documents\GitHub\aoCAPTCHA\aoCaptcha\aoCaptcha\obj\Debug\aoCaptcha.pdb
